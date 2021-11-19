@@ -12,10 +12,10 @@ if (isset($_POST['addnewbarang'])) {
 
     $addtotable = mysqli_query($conn, "insert into stock (namabarang, deskripsi, stock, image) values ('$namabarang','$deskripsi','$stock','$image')");
     if ($addtotable) {
-        header('location:index.php');
+        header('location:stock.php');
     } else {
         echo 'Gagal';
-        header('location:index.php');
+        header('location:stock.php');
     }
 }
 
@@ -101,20 +101,20 @@ if (isset($_POST['updatebarang'])) {
         //jika tidak ingin upload
         $update = mysqli_query($conn, "update stock set namabarang='$namabarang', deskripsi='$deskripsi' where idbarang='$idb'");
         if ($update) {
-            header('location:index.php');
+            header('location:stock.php');
         } else {
             echo 'Gagal';
-            header('location:index.php');
+            header('location:stock.php');
         }
     } else {
         //jika ingin upload
         move_uploaded_file($file_tmp, 'images/' . $image);
         $update = mysqli_query($conn, "update stock set namabarang='$namabarang', deskripsi='$deskripsi', image='$image' where idbarang='$idb'");
         if ($update) {
-            header('location:index.php');
+            header('location:stock.php');
         } else {
             echo 'Gagal';
-            header('location:index.php');
+            header('location:stock.php');
         }
     }
 }
@@ -129,10 +129,10 @@ if (isset($_POST['hapusbarang'])) {
     unlink($img);
     $hapus = mysqli_query($conn, "delete from stock where idbarang='$idb'");
     if ($hapus) {
-        header('location:index.php');
+        header('location:stock.php');
     } else {
         echo 'Gagal';
-        header('location:index.php');
+        header('location:stock.php');
     }
 };
 
